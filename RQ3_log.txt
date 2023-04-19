@@ -1,0 +1,1086 @@
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/555_gender_0.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=64 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/555_gender_0.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=64, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 103501.03it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 6.64974
+one epoch train: 7.052832841873169
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.03125, 'NDCG@20': tensor(0.0175), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0156)}
+one epoch val: 0.28903913497924805
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.42701
+one epoch train: 6.716348886489868
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.03125, 'NDCG@20': tensor(0.0093), 'Recall@5': 0.00625, 'NDCG@5': tensor(0.0024)}
+one epoch val: 0.1523573398590088
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.17754
+one epoch train: 6.463834524154663
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0094), 'Recall@5': 0.00625, 'NDCG@5': tensor(0.0027)}
+one epoch val: 0.18616175651550293
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.33551
+one epoch train: 6.584779739379883
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0118), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0118)}
+one epoch val: 0.2567172050476074
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 5.84803
+one epoch train: 7.030804395675659
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0158), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0158)}
+one epoch val: 0.14818263053894043
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.06279
+one epoch train: 6.291670322418213
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0250), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0250)}
+one epoch val: 0.1476459503173828
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 5.92921
+one epoch train: 6.501763582229614
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0158), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0158)}
+one epoch val: 0.14623427391052246
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.79155
+one epoch train: 6.251186370849609
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.14748764038085938
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.86294
+one epoch train: 6.68821382522583
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.15971875190734863
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.87294
+one epoch train: 6.323594570159912
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0067), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.14382243156433105
+train_time: 65.90502905845642
+val_time: 1.777367115020752
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.01875, 'NDCG@20': tensor(0.0143), 'Recall@5': 0.0125, 'NDCG@5': tensor(0.0125)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/555_gender_0.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/555_gender_0.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<?, ?it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 6.69794
+one epoch train: 14.881625175476074
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0250), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0250)}
+one epoch val: 0.8306715488433838
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.58569
+one epoch train: 12.624074220657349
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0158), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0158)}
+one epoch val: 0.27906131744384766
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.28009
+one epoch train: 13.461476802825928
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.03125, 'NDCG@20': tensor(0.0212), 'Recall@5': 0.03125, 'NDCG@5': tensor(0.0212)}
+one epoch val: 0.5149695873260498
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 5.90911
+one epoch train: 15.099496841430664
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.04375, 'NDCG@20': tensor(0.0263), 'Recall@5': 0.03125, 'NDCG@5': tensor(0.0220)}
+one epoch val: 0.474088191986084
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 5.76892
+one epoch train: 22.738187313079834
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.0375, 'NDCG@20': tensor(0.0145), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0105)}
+one epoch val: 0.533146858215332
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 5.99752
+one epoch train: 17.873770236968994
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0158), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0158)}
+one epoch val: 0.6052422523498535
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 5.71404
+one epoch train: 18.829748153686523
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0158), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0158)}
+one epoch val: 0.6143860816955566
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.71278
+one epoch train: 18.62537384033203
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0158), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0158)}
+one epoch val: 0.966731071472168
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.71467
+one epoch train: 20.889754056930542
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0158), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0158)}
+one epoch val: 0.6611297130584717
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.59676
+one epoch train: 21.26849055290222
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.025, 'NDCG@20': tensor(0.0250), 'Recall@5': 0.025, 'NDCG@5': tensor(0.0250)}
+one epoch val: 0.687122106552124
+train_time: 176.29199719429016
+val_time: 6.166548728942871
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.01875, 'NDCG@20': tensor(0.0098), 'Recall@5': 0.0125, 'NDCG@5': tensor(0.0079)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/555_gender_1.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/555_gender_1.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 497/497 [00:00<00:00, 206802.49it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 6.67178
+one epoch train: 15.303192138671875
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0021), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.48484206199645996
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.45584
+one epoch train: 14.995567798614502
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0019), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5545194149017334
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.25561
+one epoch train: 15.832771062850952
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5381450653076172
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.06281
+one epoch train: 15.256117820739746
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.6509482860565186
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 5.89276
+one epoch train: 11.714022397994995
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.43665051460266113
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 5.77939
+one epoch train: 11.35275936126709
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0021), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5675580501556396
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 5.66218
+one epoch train: 12.321243047714233
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.35485148429870605
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.53947
+one epoch train: 10.337335586547852
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.2894167900085449
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.54993
+one epoch train: 11.8853280544281
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.3196251392364502
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.36533
+one epoch train: 10.664214134216309
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.3210134506225586
+train_time: 129.66255140304565
+val_time: 4.51757025718689
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0021), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/555_gender_2.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/555_gender_2.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 488/488 [00:00<00:00, 489435.76it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 6.78320
+one epoch train: 10.57264256477356
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0023), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.370297908782959
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.47418
+one epoch train: 9.610229730606079
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0020), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.300626277923584
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.21415
+one epoch train: 10.308427333831787
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.3591599464416504
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 5.99698
+one epoch train: 10.211019277572632
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.3358933925628662
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 5.86475
+one epoch train: 10.034693002700806
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.2879636287689209
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 5.78076
+one epoch train: 10.022807836532593
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.28603339195251465
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 5.74477
+one epoch train: 10.126578330993652
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.31932568550109863
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.49257
+one epoch train: 10.258638620376587
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.34548306465148926
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.35066
+one epoch train: 10.078426122665405
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.2865755558013916
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.29601
+one epoch train: 10.061502456665039
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.299990177154541
+train_time: 101.28496527671814
+val_time: 3.1913490295410156
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.008928571827709675, 'NDCG@20': tensor(0.0021), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_0.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_0.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 175/175 [00:00<00:00, 1012.39it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.18575
+one epoch train: 18.02966809272766
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.03125, 'NDCG@20': tensor(0.0182), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.6632513999938965
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.84309
+one epoch train: 17.86043095588684
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.017857142857142856, 'NDCG@20': tensor(0.0149), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.563326358795166
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.51944
+one epoch train: 19.218639373779297
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.017857142857142856, 'NDCG@20': tensor(0.0148), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.6535236835479736
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.41112
+one epoch train: 19.538737297058105
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.013392857142857142, 'NDCG@20': tensor(0.0134), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.6087803840637207
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.25302
+one epoch train: 17.95379400253296
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.022321428571428572, 'NDCG@20': tensor(0.0163), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.5779039859771729
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.12782
+one epoch train: 18.381221294403076
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.017857142857142856, 'NDCG@20': tensor(0.0069), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0058)}
+one epoch val: 0.7491464614868164
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 6.02909
+one epoch train: 18.235823154449463
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.017857142857142856, 'NDCG@20': tensor(0.0146), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.5940237045288086
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.91875
+one epoch train: 18.499964475631714
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.013392857142857142, 'NDCG@20': tensor(0.0134), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.6204869747161865
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.62614
+one epoch train: 18.186845541000366
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.010582010660852705, 'NDCG@20': tensor(0.0036), 'Recall@5': 0.005291005330426353, 'NDCG@5': tensor(0.0023)}
+one epoch val: 0.5809628963470459
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.52855
+one epoch train: 19.023082494735718
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.017857142857142856, 'NDCG@20': tensor(0.0146), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0134)}
+one epoch val: 0.5571153163909912
+train_time: 184.9282066822052
+val_time: 6.168521165847778
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.013392857142857142, 'NDCG@20': tensor(0.0037), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_1.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_1.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 838/838 [00:00<00:00, 492755.75it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.29339
+one epoch train: 18.547892093658447
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0023), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.6022758483886719
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.94032
+one epoch train: 18.04171895980835
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5334148406982422
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.65357
+one epoch train: 18.138054370880127
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.009566326758691244, 'NDCG@20': tensor(0.0064), 'Recall@5': 0.005102041044405529, 'NDCG@5': tensor(0.0051)}
+one epoch val: 0.7238891124725342
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.47282
+one epoch train: 19.059502601623535
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.005102041044405529, 'NDCG@20': tensor(0.0015), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5617432594299316
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.39916
+one epoch train: 18.317782163619995
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.005102041044405529, 'NDCG@20': tensor(0.0051), 'Recall@5': 0.005102041044405529, 'NDCG@5': tensor(0.0051)}
+one epoch val: 0.6290655136108398
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.23553
+one epoch train: 17.755271196365356
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.005102041044405529, 'NDCG@20': tensor(0.0051), 'Recall@5': 0.005102041044405529, 'NDCG@5': tensor(0.0051)}
+one epoch val: 0.5294740200042725
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 6.20484
+one epoch train: 17.910264492034912
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.005102041044405529, 'NDCG@20': tensor(0.0051), 'Recall@5': 0.005102041044405529, 'NDCG@5': tensor(0.0051)}
+one epoch val: 0.5318574905395508
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 6.08983
+one epoch train: 18.112980365753174
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.005102041044405529, 'NDCG@20': tensor(0.0032), 'Recall@5': 0.005102041044405529, 'NDCG@5': tensor(0.0032)}
+one epoch val: 0.5822415351867676
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 6.00063
+one epoch train: 18.131601572036743
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.005102041044405529, 'NDCG@20': tensor(0.0022), 'Recall@5': 0.005102041044405529, 'NDCG@5': tensor(0.0022)}
+one epoch val: 0.6043367385864258
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.72824
+one epoch train: 18.07702660560608
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.009566326758691244, 'NDCG@20': tensor(0.0028), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5917437076568604
+train_time: 182.09209442138672
+val_time: 5.890042066574097
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0013), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_2.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_2.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 895/895 [00:00<00:00, 444564.43it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.37832
+one epoch train: 19.154175758361816
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0026), 'Recall@5': 0.00390625, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.5565557479858398
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.93881
+one epoch train: 21.53408646583557
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.01171875, 'NDCG@20': tensor(0.0051), 'Recall@5': 0.00390625, 'NDCG@5': tensor(0.0025)}
+one epoch val: 0.6219792366027832
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.76241
+one epoch train: 19.373361587524414
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0035), 'Recall@5': 0.0078125, 'NDCG@5': tensor(0.0035)}
+one epoch val: 0.5623221397399902
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.48075
+one epoch train: 19.138724088668823
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.01171875, 'NDCG@20': tensor(0.0037), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5750217437744141
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.36793
+one epoch train: 19.14936065673828
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0029), 'Recall@5': 0.00390625, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.545743465423584
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.28533
+one epoch train: 19.047420024871826
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0029), 'Recall@5': 0.00390625, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.5416674613952637
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 6.39183
+one epoch train: 20.907233476638794
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.01171875, 'NDCG@20': tensor(0.0049), 'Recall@5': 0.0078125, 'NDCG@5': tensor(0.0040)}
+one epoch val: 0.5800573825836182
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 6.19426
+one epoch train: 19.12747073173523
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.0078125, 'NDCG@20': tensor(0.0022), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5881950855255127
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 6.11676
+one epoch train: 19.101333618164062
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.01171875, 'NDCG@20': tensor(0.0061), 'Recall@5': 0.00390625, 'NDCG@5': tensor(0.0039)}
+one epoch val: 0.6370892524719238
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 6.13233
+one epoch train: 20.593557596206665
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.00390625, 'NDCG@20': tensor(0.0012), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5583858489990234
+train_time: 197.12672400474548
+val_time: 5.767017364501953
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.06640625, 'NDCG@20': tensor(0.0286), 'Recall@5': 0.06640625, 'NDCG@5': tensor(0.0286)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_3.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_3.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 824/824 [00:00<00:00, 398674.18it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.32568
+one epoch train: 17.978304862976074
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0023), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.49289870262145996
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.98755
+one epoch train: 17.67559790611267
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0017), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.5525274276733398
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.61273
+one epoch train: 20.794409036636353
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0055), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.6224470138549805
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.48866
+one epoch train: 16.156450271606445
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0030), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.4817981719970703
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.36103
+one epoch train: 15.482877969741821
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.013392857142857142, 'NDCG@20': tensor(0.0048), 'Recall@5': 0.008928571428571428, 'NDCG@5': tensor(0.0036)}
+one epoch val: 0.4688429832458496
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.19190
+one epoch train: 15.43841552734375
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0028), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0028)}
+one epoch val: 0.4628474712371826
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 6.22685
+one epoch train: 15.678394556045532
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0030), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.4940781593322754
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 6.01392
+one epoch train: 16.113879203796387
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0035), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0019)}
+one epoch val: 0.45840001106262207
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.93218
+one epoch train: 16.9242205619812
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0029), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.4793238639831543
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.85619
+one epoch train: 15.926761627197266
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.013392857142857142, 'NDCG@20': tensor(0.0034), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5146489143371582
+train_time: 168.1693115234375
+val_time: 5.027812719345093
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_4.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_4.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 792/792 [00:00<00:00, 264734.52it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.17885
+one epoch train: 29.97842764854431
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.017857142857142856, 'NDCG@20': tensor(0.0087), 'Recall@5': 0.013392857142857142, 'NDCG@5': tensor(0.0074)}
+one epoch val: 1.0111584663391113
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.93370
+one epoch train: 27.191866636276245
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0033), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0019)}
+one epoch val: 1.101567029953003
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.61601
+one epoch train: 31.25145959854126
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.019132653517382487, 'NDCG@20': tensor(0.0103), 'Recall@5': 0.019132653517382487, 'NDCG@5': tensor(0.0103)}
+one epoch val: 1.2847890853881836
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.41560
+one epoch train: 26.775006532669067
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0056), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0045)}
+one epoch val: 1.0007431507110596
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.23399
+one epoch train: 24.857345581054688
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0028), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0028)}
+one epoch val: 0.8828721046447754
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.16481
+one epoch train: 24.437283039093018
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0045), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.9365777969360352
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 6.06623
+one epoch train: 23.864795684814453
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0028), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0028)}
+one epoch val: 1.0936684608459473
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.89810
+one epoch train: 23.667888641357422
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0022), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0022)}
+one epoch val: 0.7076694965362549
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.84637
+one epoch train: 23.168450593948364
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0028), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0028)}
+one epoch val: 0.6765408515930176
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.56657
+one epoch train: 23.543926000595093
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0028), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0028)}
+one epoch val: 1.201124906539917
+train_time: 258.7364499568939
+val_time: 9.896711349487305
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0026), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_5.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_5.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 756/756 [00:00<00:00, 759131.87it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.23722
+one epoch train: 26.245877981185913
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.017857142857142856, 'NDCG@20': tensor(0.0053), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0019)}
+one epoch val: 0.824714183807373
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.89276
+one epoch train: 25.733919143676758
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0027), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5391016006469727
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.63393
+one epoch train: 23.824811935424805
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0023), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8334012031555176
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.48356
+one epoch train: 21.673967838287354
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0027), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5643236637115479
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.38242
+one epoch train: 20.375832319259644
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0013), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.7011618614196777
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.24807
+one epoch train: 25.037760734558105
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0028), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0028)}
+one epoch val: 0.7120728492736816
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 6.10434
+one epoch train: 24.121781826019287
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.831329345703125
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 6.07801
+one epoch train: 22.887882471084595
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.7964391708374023
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.92085
+one epoch train: 25.971668004989624
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 1.113368034362793
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.77624
+one epoch train: 28.871785640716553
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0016), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.7556006908416748
+train_time: 244.74528789520264
+val_time: 7.671512603759766
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0017), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_6.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_6.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 767/767 [00:00<00:00, 256459.76it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.29067
+one epoch train: 23.42253613471985
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0010), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8314011096954346
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 7.05237
+one epoch train: 27.135688543319702
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.7880938053131104
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.66917
+one epoch train: 24.25830888748169
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8905670642852783
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.44717
+one epoch train: 25.65104866027832
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8270268440246582
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.39645
+one epoch train: 25.630155563354492
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8624560832977295
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.29771
+one epoch train: 20.405296325683594
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5532662868499756
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 6.18113
+one epoch train: 17.415239572525024
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5512726306915283
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 6.13489
+one epoch train: 17.373713970184326
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0017), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.5215034484863281
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.92771
+one epoch train: 17.534892797470093
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0011), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5534307956695557
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.77622
+one epoch train: 18.099213123321533
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0015), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5366945266723633
+train_time: 216.92609357833862
+val_time: 6.915712594985962
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0022), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0022)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_7.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=10 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_7.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=10, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 365/365 [00:00<00:00, 363898.49it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.12292
+one epoch train: 18.728103637695312
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5129945278167725
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.85278
+one epoch train: 22.063318014144897
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 1.0054359436035156
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.46336
+one epoch train: 17.569457054138184
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0013), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5056061744689941
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.36464
+one epoch train: 15.842249870300293
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.4447205066680908
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.11460
+one epoch train: 15.95609426498413
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0011), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.42695045471191406
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.04272
+one epoch train: 15.821512222290039
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0045), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.46630048751831055
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 5.90587
+one epoch train: 15.092044830322266
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0057), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.46005940437316895
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.83554
+one epoch train: 18.242376565933228
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0026), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.867119550704956
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.53770
+one epoch train: 28.23505997657776
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0045), 'Recall@5': 0.008928571428571428, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.7613711357116699
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.36108
+one epoch train: 15.964982748031616
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0034), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0022)}
+one epoch val: 0.6253767013549805
+train_time: 183.51519918441772
+val_time: 6.075934886932373
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master>python main.py --task_name=cold_start --seed=10 --source_path=data/sbr_data_1M.csv --target_path=data/965_age_7.csv --model_name=bert4coldstart --train_batch_size=32 --val_batch_size=32 --test_batch_size=32 --epochs=20 --lr=0.001 --hidden_size=128 --block_num=16 --embedding_size=128 --num_heads=4 --is_pretrain=2 --ch=False
+Namespace(seed=10, task_name='cold_start', task_num=4, dataset_path='', pretrain_path='', source_path='data/sbr_data_1M.csv', target_path='data/965_age_7.csv', train_batch_size=32, val_batch_size=32, test_batch_size=32, sample='random', negsample_savefolder='./data/neg_data/', negsample_size=99, max_len=20, item_min=10, save_path='./checkpoint/', task=-1, valid_rate=100, model_name='bert4coldstart', epochs=20, re_epochs=20, lr=0.001, device='cpu', is_parallel=False, local_rank=None, num_gpu=1, weight_decay=0.0, decay_step=5, gamma=0.5, num_users=1, num_items=1, num_embedding=1, num_labels=1, k=20, metric_ks=[5, 20], best_metric='NDCG@10', hidden_size=128, block_num=16, num_groups=4, num_heads=4, dropout=0.3, bert_mask_prob=0.3, factor_num=128, embedding_size=128, dilations=[1, 4], kernel_size=3, is_mp=False, pad_token=0, temp=7, l2_emb=0.0, mtl_task_num=1, test_method='ufo', val_method='ufo', test_size=0.1, val_size=0.1111, cand_num=100, sample_method='high-pop', sample_ratio=0.3, num_ng=4, loss_type='BPR', init_method='default', optimizer='default', early_stop=True, reg_1=0.0, reg_2=0.0, context_window=2, rho=0.5, node_dropout=0.1, mess_dropout=0.1, hidden_size_list=[128, 128], latent_dim=128, anneal_cap=0.2, total_anneal_steps=1000, kd=False, alpha=0.4, add_num_times=2, is_pretrain=2, user_profile='gender', prun_rate=0, ll_max_itemnum=0, lifelong_eval=True, task1_out=0, task2_out=0, task3_out=0, task4_out=0, eval=True, ch=True)
+=============cold_start=============
+hot & cold
+========== Initialize Reset DataFrame Object ==========
+========== Resetting user ids and item ids in DataFrame ==========
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\utils.py:814: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df1['user_id'].append(df2['user_id'])
+========== Initialize Reset DataFrame Object ==========
+========== Resetting item ids in DataFrame ==========
++++user_history+++
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 365/365 [00:00<00:00, 183168.34it/s]
+D:\STUDY\Year3\Winter\CISC372\Tenrec\Tenrec\2022-NIPS-Tenrec-master\main.py:151: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  train_data = hot_data.append(cold_1)
+++++++++++++++++++++ Train Epoch 1 ++++++++++++++++++++
+Training CE Loss: 7.12292
+one epoch train: 18.96653389930725
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5160212516784668
+++++++++++++++++++++ Train Epoch 2 ++++++++++++++++++++
+Training CE Loss: 6.85278
+one epoch train: 18.792623043060303
+++++++++++++++++++++ Valid Epoch 2 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.6609735488891602
+++++++++++++++++++++ Train Epoch 3 ++++++++++++++++++++
+Training CE Loss: 6.46336
+one epoch train: 19.225811004638672
+++++++++++++++++++++ Valid Epoch 3 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0013), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.6160717010498047
+++++++++++++++++++++ Train Epoch 4 ++++++++++++++++++++
+Training CE Loss: 6.36464
+one epoch train: 23.648999214172363
+++++++++++++++++++++ Valid Epoch 4 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.7898213863372803
+++++++++++++++++++++ Train Epoch 5 ++++++++++++++++++++
+Training CE Loss: 6.11460
+one epoch train: 22.522240161895752
+++++++++++++++++++++ Valid Epoch 5 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0011), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8378453254699707
+++++++++++++++++++++ Train Epoch 6 ++++++++++++++++++++
+Training CE Loss: 6.04272
+one epoch train: 21.351500034332275
+++++++++++++++++++++ Valid Epoch 6 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0045), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.7146639823913574
+++++++++++++++++++++ Train Epoch 7 ++++++++++++++++++++
+Training CE Loss: 5.90587
+one epoch train: 22.171923398971558
+++++++++++++++++++++ Valid Epoch 7 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0057), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.7174787521362305
+++++++++++++++++++++ Train Epoch 8 ++++++++++++++++++++
+Training CE Loss: 5.83554
+one epoch train: 24.400429248809814
+++++++++++++++++++++ Valid Epoch 8 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0026), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.555659294128418
+++++++++++++++++++++ Train Epoch 9 ++++++++++++++++++++
+Training CE Loss: 5.53770
+one epoch train: 20.523253917694092
+++++++++++++++++++++ Valid Epoch 9 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0045), 'Recall@5': 0.008928571428571428, 'NDCG@5': tensor(0.0045)}
+one epoch val: 0.866929292678833
+++++++++++++++++++++ Train Epoch 10 ++++++++++++++++++++
+Training CE Loss: 5.36108
+one epoch train: 23.68765091896057
+++++++++++++++++++++ Valid Epoch 10 ++++++++++++++++++++
+{'Recall@20': 0.008928571428571428, 'NDCG@20': tensor(0.0034), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0022)}
+one epoch val: 1.1583051681518555
+++++++++++++++++++++ Train Epoch 11 ++++++++++++++++++++
+Training CE Loss: 5.24205
+one epoch train: 30.102500200271606
+++++++++++++++++++++ Valid Epoch 11 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0013), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 1.1813452243804932
+++++++++++++++++++++ Train Epoch 12 ++++++++++++++++++++
+Training CE Loss: 4.92221
+one epoch train: 27.6954243183136
+++++++++++++++++++++ Valid Epoch 12 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0017), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.9197225570678711
+++++++++++++++++++++ Train Epoch 13 ++++++++++++++++++++
+Training CE Loss: 4.78924
+one epoch train: 24.295072555541992
+++++++++++++++++++++ Valid Epoch 13 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.6608543395996094
+++++++++++++++++++++ Train Epoch 14 ++++++++++++++++++++
+Training CE Loss: 4.34013
+one epoch train: 25.17188048362732
+++++++++++++++++++++ Valid Epoch 14 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0017), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.7117536067962646
+++++++++++++++++++++ Train Epoch 15 ++++++++++++++++++++
+Training CE Loss: 4.09516
+one epoch train: 22.922396421432495
+++++++++++++++++++++ Valid Epoch 15 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0014), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.7652626037597656
+++++++++++++++++++++ Train Epoch 16 ++++++++++++++++++++
+Training CE Loss: 4.00198
+one epoch train: 22.65320324897766
+++++++++++++++++++++ Valid Epoch 16 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0017), 'Recall@5': 0.004464285714285714, 'NDCG@5': tensor(0.0017)}
+one epoch val: 0.5232107639312744
+++++++++++++++++++++ Train Epoch 17 ++++++++++++++++++++
+Training CE Loss: 3.64790
+one epoch train: 19.463579654693604
+++++++++++++++++++++ Valid Epoch 17 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0011), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8475658893585205
+++++++++++++++++++++ Train Epoch 18 ++++++++++++++++++++
+Training CE Loss: 3.33166
+one epoch train: 40.811753034591675
+++++++++++++++++++++ Valid Epoch 18 ++++++++++++++++++++
+{'Recall@20': 0.004464285714285714, 'NDCG@20': tensor(0.0012), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.8080389499664307
+++++++++++++++++++++ Train Epoch 19 ++++++++++++++++++++
+Training CE Loss: 3.08015
+one epoch train: 24.85110569000244
+++++++++++++++++++++ Valid Epoch 19 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.9286758899688721
+++++++++++++++++++++ Train Epoch 20 ++++++++++++++++++++
+Training CE Loss: 2.97884
+one epoch train: 22.698498487472534
+++++++++++++++++++++ Valid Epoch 20 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
+one epoch val: 0.5251865386962891
+train_time: 475.9563789367676
+val_time: 15.305386066436768
+++++++++++++++++++++ Valid Epoch 1 ++++++++++++++++++++
+{'Recall@20': 0.0, 'NDCG@20': tensor(0.), 'Recall@5': 0.0, 'NDCG@5': tensor(0.)}
